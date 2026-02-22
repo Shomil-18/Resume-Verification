@@ -1,0 +1,19 @@
+{
+  "$schema": "https://railway.app/railway.schema.json",
+  "services": {
+    "backend": {
+      "build": {
+        "builder": "dockerfile",
+        "dockerfile": "backend/Dockerfile",
+        "context": "backend"
+      },
+      "deploy": {
+        "startCommand": "uvicorn main:app --host 0.0.0.0 --port $PORT",
+        "restartPolicyMaxRetries": 5
+      },
+      "variables": {
+        "PORT": "8000"
+      }
+    }
+  }
+}
